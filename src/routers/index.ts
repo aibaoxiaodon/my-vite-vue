@@ -1,12 +1,15 @@
-import { createApp } from 'vue'
-import { createWebHashHistory, createRouter } from 'vue-router'
+import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
+import homeRouters from './homeRouters'
 
-const history = createWebHashHistory()
+const routes: RouteRecordRaw[] = [
+  { path: '/', redirect: '/home' },
+  ...homeRouters
+]
+
+
 const router = createRouter({
-  history,
-  routes: [
-    { path: '/', component: () => import('../views/home/index.vue') }
-  ]
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
 })
 
 export default router
