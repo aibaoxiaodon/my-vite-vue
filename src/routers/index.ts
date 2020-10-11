@@ -2,7 +2,6 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
 import homeRouters from './homeRouters'
 
 const routes: RouteRecordRaw[] = [
-  { path: '/', redirect: '/home' },
   ...homeRouters
 ]
 
