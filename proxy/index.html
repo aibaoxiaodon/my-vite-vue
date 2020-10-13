@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy 代理</title>
+</head>
+<body>
+    <input type="text" id="input">
+
+    <p id="p"></p>
+
+    <script src="./proxy.js"></script>
+
+    <script>
+
+        let targetMap = new WeakMap()
+        let target = {
+            name: 'hxd'
+        }
+        console.log(targetMap.get(target))
+    </script>
+    <script>
+        const Input = document.getElementById('input')
+        const P = document.getElementById('p')
+
+        Input.addEventListener('input', function (e) {
+            proxy.name = e.target.value
+
+            P.innerHTML = proxy.name
+        }, false)
+
+        Input.value = proxy.name
+
+    </script>
+</body>
+</html>
