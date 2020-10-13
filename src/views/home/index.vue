@@ -7,29 +7,20 @@
     <div>
       total: {{ total }}
     </div>
+
+    <p>{{ x }} {{ y }}</p>
   </div>
 </template>
 
 <script>
-  import { ref, reactive, computed } from 'vue'
+  import useTodoList from '../../composition/useTodoList'
+  import useSlipBy from '../../composition/useSlipBy'
   export default {
     setup () {
-      let state = reactive({
-        todos: [ { name: '学习', done: false }, { name: '上班', done: false }],
-        val: ''
-      })
+      const { state, total, addTodo } = useTodoList()
+      const { x, y } = useSlipBy()
 
-      let total = computed(() => state.todos.length)
-
-      function addTodo () {
-        state.todos.push({
-          done: false,
-          name: state.val
-        })
-        state.val = ''
-      }
-
-      return { state, total, addTodo }
+      return { state, total, addTodo, x, y }
     },
     name: 'Home'
   }
